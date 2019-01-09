@@ -22,7 +22,7 @@ export const signin = (formProps, callback) => async dispatch => {
     console.log(response);
 
     dispatch({ type: AUTH_USER, payload: response.data.jwt })
-    dispatch({ type: CURRENT_USER, payload: response.data.user.id })
+    dispatch({ type: CURRENT_USER, payload: response.data.user })
     localStorage.setItem('token', response.data.jwt)
     // using localStorage (built into the broswer)
     callback()
@@ -32,6 +32,18 @@ export const signin = (formProps, callback) => async dispatch => {
   }
 }
 
+export const fetchCurrentUser = () => async dispatch => {
+  let config = {
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
+  }
+    const response = await base.get('/api/v1/profile', config)
+    dispatch(setCurrentUser(response.data.user))
+}
+
+export const setCurrentUser = (userData) => ({
+  type: CURRENT_USER,
+  payload: userData
+})
 
 export const signout = () => {
   localStorage.removeItem('token')
@@ -44,7 +56,6 @@ export const signout = () => {
 
 export const clearId = () => {
   return {
-    type: RESET_ID,
-    payload: null
+    type: RESET_ID
   }
 }

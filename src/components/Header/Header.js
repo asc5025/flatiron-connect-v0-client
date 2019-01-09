@@ -17,8 +17,7 @@ class Header extends React.Component {
     } else {
       return (
         <div>
-        <Link to="/signup">Sign Up</Link>
-        <Link to="/signin">Sign In</Link>
+          <Link to="/signin">Sign In</Link>
         </div>
       )
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchCurrentUser } from '../../store/actions'
 
 export default (ChildComponent) => {
   class ComposedComponent extends Component {
@@ -13,8 +14,11 @@ export default (ChildComponent) => {
     }
 
     shouldNavigate() {
+      if (localStorage.getItem('token') && !this.props.loggedIn) {
+        this.props.fetchCurrentUser()
+      }
       if (!this.props.auth) {
-        this.props.history.push('/')
+        this.props.history.push('/signup')
       }
     }
 
@@ -27,7 +31,7 @@ export default (ChildComponent) => {
     return { auth: state.auth.authenticated }
   }
 
-  return connect(mapStateToProps)(ComposedComponent);
+  return connect(mapStateToProps, {fetchCurrentUser})(ComposedComponent);
 }
 
 

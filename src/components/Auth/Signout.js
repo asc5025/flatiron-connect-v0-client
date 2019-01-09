@@ -6,12 +6,12 @@ class Signout extends React.Component {
   componentDidMount() {
     this.props.signout()
     this.props.clearId()
+    this.props.history.push('/signin')
   }
 
   render() {
     return (
       <div>
-        Sorry to see you go
       </div>
     )
   }

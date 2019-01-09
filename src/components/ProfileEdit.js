@@ -1,18 +1,15 @@
 import React from 'react';
 import withAuth from './hoc/withAuth';
 
-class MainContainer extends React.Component {
-
+class ProfileEdit extends React.Component {
 
   render() {
     return (
       <div>
-        Main
+        ProfileEdit
       </div>
     )
   }
 }
 
-
-
-export default withAuth(MainContainer);
+export default withAuth(ProfileEdit);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { Link } from 'react-router-dom'
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
@@ -22,28 +23,38 @@ class Signin extends React.Component {
     // handleSubmit given to us by reduxForm, as props
 
     return (
-      <form onSubmit={handleSubmit(this.onSubmit)}>
-        <fieldset>
-          <label>Email</label>
-          <Field
-            name="email"
-            type="text"
-            component="input"
-            autoComplete="none"
-          />
-        </fieldset>
-        <fieldset>
-          <label>Password</label>
-          <Field
-            name="password"
-            type="password"
-            component="input"
-            autoComplete="none"
-          />
-        </fieldset>
-        <div>{this.props.errorMessage}</div>
-        <button>Sign in!</button>
-      </form>
+      <div>
+        <form onSubmit={handleSubmit(this.onSubmit)}>
+          <fieldset>
+            <label>Email: </label>
+            <Field
+              name="email"
+              type="text"
+              component="input"
+              autoComplete="none"
+            />
+          </fieldset>
+          <fieldset>
+            <label>Password: </label>
+            <Field
+              name="password"
+              type="password"
+              component="input"
+              autoComplete="none"
+            />
+          </fieldset>
+          <div>{this.props.errorMessage}</div>
+          <button>Sign in!</button>
+        </form>
+        <div>
+        <div>
+          <span>
+            Create an Account?
+            <span>   <Link to="/signup">Sign up</Link></span>
+          </span>
+        </div>
+        </div>
+      </div>
     )
   }
 }
