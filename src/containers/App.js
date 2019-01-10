@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { Container } from 'semantic-ui-react'
 
 import Header from '../components/Header/Header';
 import UsersContainer from '../containers/UsersContainer';
@@ -8,7 +9,7 @@ import Signin from './Auth/Signin';
 import SignupForm from './Auth/Signup/SignupForm';
 import Signout from './Auth/Signout';
 import Messages from '../components/Messages';
-import ProfileEdit from '../components/ProfileEdit';
+import Profile from '../components/Profile';
 
 class App extends React.Component {
 
@@ -20,15 +21,15 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
+      <Container>
         <Header />
-        <Route path="/" exact component={UsersContainer}/>
-        <Route path="/messages" component={Messages}/>
-        <Route path="/users/edit/:id" component={ProfileEdit}/>
         <Route path="/signup" component={SignupForm} />
         <Route path="/signin" component={Signin} />
         <Route path="/signout" component={Signout} />
-      </div>
+        <Route path="/" exact component={UsersContainer}/>
+        <Route path="/messages" component={Messages}/>
+        <Route path="/profile" component={Profile}/>
+      </Container>
     )
   }
 }

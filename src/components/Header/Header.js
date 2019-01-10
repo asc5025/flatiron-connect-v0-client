@@ -1,16 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './Header.css'
+import './Header.css';
+
 
 class Header extends React.Component {
 
+  // componentDidMount() {
+  //   this.props.fetchCurrentUser()
+  // }
+
   renderLinks() {
+    console.log(this.props);
     if (this.props.authenticated) {
+      console.log(this.props);
       return (
         <div>
           <Link to="/messages">Messages</Link>
-          <Link to="/users/edit/:id">Edit Profile</Link>
+          <Link to="/profile">My Profile</Link>
           <Link to="/signout">Sign Out</Link>
         </div>
       )
@@ -23,6 +30,12 @@ class Header extends React.Component {
       )
     }
   }
+
+  // renderAuthLinks = () => {
+  //   if (this.props.authenticated && this.props.currentUser) {
+  //     return <Link to="/">Home</Link>
+  //   }
+  // }
 
   render() {
     console.log(this.props)
@@ -46,4 +59,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps)(Header);
