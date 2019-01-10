@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCurrentUser } from '../../store/actions'
+import { fetchCurrentUser } from '../store/actions'
 
 export default (ChildComponent) => {
   class ComposedComponent extends Component {

@@ -16,9 +16,10 @@ class Header extends React.Component {
       )
     } else {
       return (
-        <div>
-          <Link to="/signin">Sign In</Link>
-        </div>
+        null
+        // <div>
+        //   <Link to="/signin">Sign In</Link>
+        // </div>
       )
     }
   }
@@ -29,7 +30,7 @@ class Header extends React.Component {
       <div>
         <h3>Flatiron Connect</h3>
         <div className="header">
-          <Link to="/">Home</Link>
+        { this.props.authenticated && <Link to="/">Home</Link> }
           <div>
             {this.renderLinks()}
           </div>
