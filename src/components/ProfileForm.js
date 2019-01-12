@@ -31,6 +31,7 @@ class ProfileForm extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <Container>
       <Form error onSubmit={this.props.handleSubmit(this.onSubmit)}>
