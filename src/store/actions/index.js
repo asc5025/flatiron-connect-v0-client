@@ -12,3 +12,9 @@ export {
   fetchUsers,
   editProfile
 } from './users';
+
+export {
+  createConvo,
+  fetchConvos,
+  activeConvo
+} from './convo';

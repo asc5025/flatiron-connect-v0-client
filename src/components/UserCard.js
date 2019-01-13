@@ -3,6 +3,8 @@ import { Card, Image, Icon } from 'semantic-ui-react';
 
 import MessageForm from '../containers/MessageForm'
 
+
+
 const UserCard = ({ user }) => {
   return (
     <Card>

@@ -1,5 +1,8 @@
 import React from 'react';
+import withAuth from '../hoc/withAuth';
 import { Modal, Form, Button, Icon, Header, Image, Message } from 'semantic-ui-react';
+import { createConvo, activeConvo } from '../store/actions';
+import { connect } from 'react-redux';
 
 class MessageForm extends React.Component {
   state = {
@@ -8,7 +11,21 @@ class MessageForm extends React.Component {
     messageSent: false
   }
 
-  handleOpen = () => this.setState({ modalOpen: true })
+  handleOpen = (id) => {
+    let convos = Object.values(this.props.convo)
+    let active = convos.map(user => user.recipient_id).includes(id)
+    debugger
+    if (active) {
+      this.props.activeConvo(id)
+      debugger
+    } else {
+      this.props.createConvo(id)
+    }
+
+    this.setState({ modalOpen: true })
+  }
+
+
   handleClose = () => this.setState({ modalOpen: false })
 
   handleSubmit = event => {
@@ -29,14 +46,15 @@ class MessageForm extends React.Component {
   }
 
   render(){
-    const { img_url, full_name } = this.props.user
+    const { id, img_url, full_name } = this.props.user
+    // const { convoId } = this.props.convo
     return(
       <Modal
         closeIcon
         open={this.state.modalOpen}
         onClose={this.handleClose}
         trigger={
-          <Button onClick={this.handleOpen} primary><Icon name="comment alternate outline"/>Message</Button>}
+          <Button onClick={() => this.handleOpen(id)} primary><Icon name="comment alternate outline"/>Message</Button>}
       >
         <Header as='h3'><Image circular src={img_url}/>{full_name}</Header>
         <Modal.Content>
@@ -53,5 +71,10 @@ class MessageForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    convo: state.convo
+  }
+}
 
-export default MessageForm
+export default connect(mapStateToProps, { createConvo, activeConvo })(withAuth(MessageForm))

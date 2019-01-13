@@ -1,11 +1,10 @@
 import React from 'react';
 import withAuth from '../hoc/withAuth';
 import { connect } from 'react-redux';
-import { fetchUsers } from '../store/actions';
+import { fetchUsers, fetchConvos } from '../store/actions';
 import { Card } from "semantic-ui-react";
 import UserCard from '../components/UserCard';
 import Search from  '../components/Search';
-import { Redirect } from 'react-router-dom';
 
 class UsersContainer extends React.Component {
   state = {
@@ -17,7 +16,7 @@ class UsersContainer extends React.Component {
 
   componentDidMount() {
     this.props.fetchUsers()
-    console.log('In UsersContainer DidMount:', this.props);
+    this.props.fetchConvos()
   }
 
   handleChange = (event) => {
@@ -77,4 +76,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { fetchUsers })(withAuth(UsersContainer));
+export default connect(mapStateToProps, { fetchUsers, fetchConvos })(withAuth(UsersContainer));
