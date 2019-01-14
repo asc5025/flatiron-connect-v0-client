@@ -37,4 +37,4 @@ export default (ChildComponent) => {
 
 // this is a function (hoc)
 // injecting another component, reusable functionality (i.e. authentication)
-// !! IMPORTANT Line 22, must pass props from parent to child
+// !! IMPORTANT Line 26, must pass props from parent to child

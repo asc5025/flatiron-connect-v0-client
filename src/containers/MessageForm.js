@@ -1,7 +1,7 @@
 import React from 'react';
 import withAuth from '../hoc/withAuth';
 import { Modal, Form, Button, Icon, Header, Image, Message } from 'semantic-ui-react';
-import { createConvo, activeConvo } from '../store/actions';
+import { createConvo, activeConvo, sendMessage } from '../store/actions';
 import { connect } from 'react-redux';
 
 class MessageForm extends React.Component {
@@ -14,10 +14,10 @@ class MessageForm extends React.Component {
   handleOpen = (id) => {
     let convos = Object.values(this.props.convo)
     let active = convos.map(user => user.recipient_id).includes(id)
-    debugger
+    // debugger
     if (active) {
       this.props.activeConvo(id)
-      debugger
+      // debugger
     } else {
       this.props.createConvo(id)
     }
@@ -31,7 +31,14 @@ class MessageForm extends React.Component {
   handleSubmit = event => {
     event.preventDefault()
     console.log(this.state.message);
+    console.log(this.props);
+    let values = {
+      content: this.state.message,
+      user_id: this.props.auth.currentUser.id
+    }
     if (this.state.message.length > 0) {
+
+      this.props.sendMessage(this.props.convo.activeConvo, values)
       this.setState({ message: '', messageSent: true })
       setTimeout(() => {
         this.setState({ modalOpen: false, messageSent: false })
@@ -46,6 +53,8 @@ class MessageForm extends React.Component {
   }
 
   render(){
+    console.log(this.props.auth);
+    console.log(this.props);
     const { id, img_url, full_name } = this.props.user
     // const { convoId } = this.props.convo
     return(
@@ -73,8 +82,10 @@ class MessageForm extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    convo: state.convo
+    convo: state.convo,
+    auth: state.auth
   }
 }
 
-export default connect(mapStateToProps, { createConvo, activeConvo })(withAuth(MessageForm))
+export default connect(mapStateToProps, { createConvo, activeConvo, sendMessage })(MessageForm)
+// export default connect(mapStateToProps, { createConvo, activeConvo })(withAuth(MessageForm))

@@ -8,7 +8,7 @@ import UsersContainer from '../containers/UsersContainer';
 import Signin from './Auth/Signin';
 import SignupForm from './Auth/Signup/SignupForm';
 import Signout from './Auth/Signout';
-import Messages from '../components/Messages';
+import MessageContainer from './MessageContainer';
 import Profile from '../components/Profile';
 
 class App extends React.Component {
@@ -27,7 +27,7 @@ class App extends React.Component {
         <Route path="/signin" component={Signin} />
         <Route path="/signout" component={Signout} />
         <Route path="/" exact component={UsersContainer}/>
-        <Route path="/messages" component={Messages}/>
+        <Route path="/messages" component={MessageContainer}/>
         <Route path="/profile" component={Profile}/>
       </Container>
     )

@@ -18,3 +18,7 @@ export {
   fetchConvos,
   activeConvo
 } from './convo';
+
+export {
+  sendMessage
+} from './message';

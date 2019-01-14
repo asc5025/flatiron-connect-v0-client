@@ -1,7 +1,7 @@
 import React from 'react';
 import withAuth from '../hoc/withAuth';
 import { connect } from 'react-redux';
-import { fetchUsers, fetchConvos } from '../store/actions';
+import { fetchUsers, fetchConvos, fetchCurrentUser } from '../store/actions';
 import { Card } from "semantic-ui-react";
 import UserCard from '../components/UserCard';
 import Search from  '../components/Search';
@@ -47,9 +47,6 @@ class UsersContainer extends React.Component {
   }
 
   render() {
-    // if (!this.props.currentUser) {
-    //   return <div>Loading...</div>
-    // }
     const industries = [...(new Set(Object.values(this.props.users).map(({current_industry}) => current_industry)))]
     return (
       <>
@@ -70,7 +67,6 @@ class UsersContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    // currentUser: state.auth.currentUser,
     users: state.users
   }
 }

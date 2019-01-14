@@ -8,3 +8,4 @@ export const CREATE_CONVO = 'CREATE_CONVO';
 export const ACTIVE_CONVO = 'ACTIVE_CONVO';
 export const FETCH_CONVO = 'FETCH_CONVO';
 export const FETCH_CONVOS = 'FETCH_CONVOS';
+export const SEND_MESSAGE = 'SEND_MESSAGE';
