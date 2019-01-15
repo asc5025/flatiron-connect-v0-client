@@ -1,5 +1,5 @@
 import React from 'react';
-import withAuth from '../hoc/withAuth';
+
 import { Modal, Form, Button, Icon, Header, Image, Message } from 'semantic-ui-react';
 import { createConvo, activeConvo, sendMessage } from '../store/actions';
 import { connect } from 'react-redux';
@@ -16,7 +16,9 @@ class MessageForm extends React.Component {
     let active = convos.map(user => user.recipient_id).includes(id)
     // debugger
     if (active) {
-      this.props.activeConvo(id)
+      const targetConvo = convos.filter(convo => convo.recipient_id === id)
+      const targetId = targetConvo[0].id
+      this.props.activeConvo(targetId)
       // debugger
     } else {
       this.props.createConvo(id)
@@ -53,8 +55,7 @@ class MessageForm extends React.Component {
   }
 
   render(){
-    console.log(this.props.auth);
-    console.log(this.props);
+
     const { id, img_url, full_name } = this.props.user
     // const { convoId } = this.props.convo
     return(

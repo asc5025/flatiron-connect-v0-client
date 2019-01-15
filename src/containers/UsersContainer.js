@@ -1,7 +1,7 @@
 import React from 'react';
 import withAuth from '../hoc/withAuth';
 import { connect } from 'react-redux';
-import { fetchUsers, fetchConvos, fetchCurrentUser } from '../store/actions';
+import { fetchUsers, fetchConvos } from '../store/actions';
 import { Card } from "semantic-ui-react";
 import UserCard from '../components/UserCard';
 import Search from  '../components/Search';

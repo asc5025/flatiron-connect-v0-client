@@ -11,9 +11,9 @@ class Header extends React.Component {
   // }
 
   renderLinks() {
-    console.log(this.props);
+    // console.log(this.props);
     if (this.props.authenticated) {
-      console.log(this.props);
+      // console.log(this.props);
       return (
         <div>
           <Link to="/messages">Messages</Link>

@@ -20,5 +20,6 @@ export {
 } from './convo';
 
 export {
-  sendMessage
+  sendMessage,
+  fetchMessages
 } from './message';
