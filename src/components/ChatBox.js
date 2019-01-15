@@ -13,9 +13,7 @@ class ChatBox extends React.Component {
     // console.log(this.props);
     return (
       <Feed>
-        {this.props.messages.map(mes => {
-          return <p key={mes.id}>{mes.content}</p>
-        })}
+        Chat
       </Feed>
     )
   }

@@ -13,14 +13,19 @@ class MessageForm extends React.Component {
 
   handleOpen = (id) => {
     let convos = Object.values(this.props.convo)
-    let active = convos.map(user => user.recipient_id).includes(id)
+    debugger
+    let targetConvo = convos.filter(c => (c.recipient_id === id || c.sender_id === id) && (c.sender_id === this.props.auth.currentUser.id || c.recipient_id === this.props.auth.currentUser.id))
+    debugger
     // debugger
-    if (active) {
-      const targetConvo = convos.filter(convo => convo.recipient_id === id)
+    if (targetConvo.length !== 0 ) {
+      // const targetConvo = convos.filter(convo => (((convo.recipient_id === id || convo.sender_id === id) && (convo.sender_id === this.props.auth.currentUser.id))))
+      debugger
       const targetId = targetConvo[0].id
+      debugger
       this.props.activeConvo(targetId)
       // debugger
     } else {
+      debugger
       this.props.createConvo(id)
     }
 

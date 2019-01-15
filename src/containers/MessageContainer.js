@@ -15,17 +15,17 @@ class MessageContainer extends React.Component {
   }
 
   handleFetchMessages = id => {
-
     // this.props.activeConvo(id)
     // debugger
-    const targetConvo = (Object.values(this.props.convo)).filter(c => c.recipient_id === id)
-
+    const targetConvo = (Object.values(this.props.convo)).filter(c => c.recipient_id === id && c.sender_id === this.props.auth.currentUser.id)
+    // debugger
     this.props.fetchMessages(targetConvo[0].id)
   }
 
   // renderCorrectImage = ()
   renderMessageCards = () => {
     const authConvos = Object.values(this.props.convo).filter(c => (c.recipient_id === this.props.auth.currentUser.id) || (c.sender_id === this.props.auth.currentUser.id) )
+    // debugger
     const correctConvos = authConvos.filter(c => c.messages.length > 0)
     const targetIds = Object.values(correctConvos).map(c => c.recipient_id)
     const users = Object.values(this.props.users)
@@ -48,8 +48,8 @@ class MessageContainer extends React.Component {
     if (!this.props.auth.currentUser) {
       return null
     }
-    const messages = Object.values(this.props.messages)
-    console.log('in mc render', messages);
+    // const messages = Object.values(this.props.messages)
+
     return (
       <Segment placeholder>
         <Grid columns={2} relaxed='very' >
@@ -63,7 +63,7 @@ class MessageContainer extends React.Component {
           <Grid.Column width={11}>
             <Comment.Group>
               <Header as='h3'>Chat</Header>
-              {messages ? <ChatBox messages={messages} /> : <div>Click Someone</div>}
+              <ChatBox />
             </Comment.Group>
           </Grid.Column>
 
