@@ -6,14 +6,8 @@ import './Header.css';
 
 class Header extends React.Component {
 
-  // componentDidMount() {
-  //   this.props.fetchCurrentUser()
-  // }
-
   renderLinks() {
-    // console.log(this.props);
-    if (this.props.authenticated) {
-      // console.log(this.props);
+    if (this.props.token) {
       return (
         <div>
           <Link to="/messages">Messages</Link>
@@ -31,19 +25,12 @@ class Header extends React.Component {
     }
   }
 
-  // renderAuthLinks = () => {
-  //   if (this.props.authenticated && this.props.currentUser) {
-  //     return <Link to="/">Home</Link>
-  //   }
-  // }
-
   render() {
-    console.log(this.props)
     return (
       <div>
         <h3>Flatiron Connect</h3>
         <div className="header">
-        { this.props.authenticated && <Link to="/">Home</Link> }
+        { this.props.token && <Link to="/">Home</Link> }
           <div>
             {this.renderLinks()}
           </div>
@@ -55,7 +42,7 @@ class Header extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    authenticated: state.auth.authenticated
+    token: state.auth.token
   }
 }
 

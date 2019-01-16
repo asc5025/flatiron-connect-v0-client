@@ -1,5 +1,5 @@
 import React from 'react';
-import { Feed, } from 'semantic-ui-react';
+import { Feed, Header} from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 
@@ -12,9 +12,11 @@ class ChatBox extends React.Component {
   render() {
     // console.log(this.props);
     return (
-      <Feed>
-        Chat
-      </Feed>
+      <>
+        <Header as='h3'>Chat Box</Header>
+        <Feed>
+        </Feed>
+      </>
     )
   }
 }

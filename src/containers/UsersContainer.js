@@ -1,7 +1,7 @@
 import React from 'react';
 import withAuth from '../hoc/withAuth';
 import { connect } from 'react-redux';
-import { fetchUsers, fetchConvos } from '../store/actions';
+import { fetchUsers } from '../store/actions';
 import { Card } from "semantic-ui-react";
 import UserCard from '../components/UserCard';
 import Search from  '../components/Search';
@@ -16,7 +16,6 @@ class UsersContainer extends React.Component {
 
   componentDidMount() {
     this.props.fetchUsers()
-    this.props.fetchConvos()
   }
 
   handleChange = (event) => {
@@ -72,4 +71,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { fetchUsers, fetchConvos })(withAuth(UsersContainer));
+export default connect(mapStateToProps, { fetchUsers })(withAuth(UsersContainer));

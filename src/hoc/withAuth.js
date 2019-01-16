@@ -14,7 +14,7 @@ export default (ChildComponent) => {
     }
 
     shouldNavigate() {
-      if (localStorage.getItem('token') && !this.props.loggedIn) {
+      if (this.props.auth && !this.props.loggedIn) {
         this.props.fetchCurrentUser()
       }
       if (!this.props.auth) {
@@ -28,8 +28,16 @@ export default (ChildComponent) => {
   }
 
   const mapStateToProps = state => {
-    return { auth: state.auth.authenticated }
+    return {
+      auth: localStorage.getItem('token'),
+      currentUser: state.auth.currentUser,
+      loggedIn: state.auth.loggedIn
+    }
   }
+  //
+  // const mapStateToProps = state => {
+  //   return { auth: state.auth.authenticated }
+  // }
 
   return connect(mapStateToProps, {fetchCurrentUser})(ComposedComponent);
 }

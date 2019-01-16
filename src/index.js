@@ -12,9 +12,9 @@ import App from './containers/App';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
   reducers,
-  {
-    auth: { authenticated: localStorage.getItem('token') }
-  },
+  // {
+  //   auth: { token: localStorage.getItem('token') }
+  // },
   composeEnhancers(applyMiddleware(thunk)
 ))
 

@@ -2,10 +2,22 @@ import { base } from '../../apis/users';
 import { FETCH_CONVOS, CREATE_CONVO, ACTIVE_CONVO } from './types';
 
 
-export const fetchConvos = () => async dispatch => {
-  const response = await base.get('/api/v1/conversations')
+
+export const fetchConvos = () => async (dispatch) => {
+  let config = {
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
+  }
+
+  const response = await base.get(`/api/v1/user/convos/`, config)
   dispatch({ type: FETCH_CONVOS, payload: response.data })
+  console.log(response.data);
 }
+
+
+// export const fetchConvos = () => async dispatch => {
+//   const response = await base.get('/api/v1/conversations')
+//   dispatch({ type: FETCH_CONVOS, payload: response.data })
+// }
 
 export const createConvo = (userId) => async (dispatch, getState) => {
   const { id } = getState().auth.currentUser

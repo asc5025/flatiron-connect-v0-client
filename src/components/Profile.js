@@ -19,8 +19,6 @@ class Profile extends React.Component {
     if (!this.props.user) {
       return <div>Loading...</div>
     }
-    console.log(this.props);
-    console.log(this.props.user.email);
     return (
       <Container>
         <h3>My Profile</h3>

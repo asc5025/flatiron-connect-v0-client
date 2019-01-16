@@ -10,7 +10,7 @@ export const signup = (formProps, callback) => async dispatch => {
     localStorage.setItem('token', response.data.jwt)
     // using localStorage (built into the broswer)
     callback()
-    // callback to history push user to the feature page after successful signup
+    // callback to history push user to the UsersContainer after successful signup
   } catch (e) {
     dispatch({ type: AUTH_ERROR, payload: "Email in use" })
   }
@@ -26,7 +26,7 @@ export const signin = (formProps, callback) => async dispatch => {
     localStorage.setItem('token', response.data.jwt)
     // using localStorage (built into the broswer)
     callback()
-    // callback to history push user to the feature page after successful signin
+    // callback to history push user to the UserContainer page after successful signin
   } catch (e) {
     dispatch({ type: AUTH_ERROR, payload: "Invalid login credentials" })
   }
