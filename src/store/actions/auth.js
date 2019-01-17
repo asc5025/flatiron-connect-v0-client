@@ -4,9 +4,8 @@ import { AUTH_USER, AUTH_ERROR, CURRENT_USER, RESET_ID } from './types';
 export const signup = (formProps, callback) => async dispatch => {
   try {
     const response = await base.post('/api/v1/users', formProps)
-
     dispatch({ type: AUTH_USER, payload: response.data.jwt })
-    dispatch({ type: CURRENT_USER, payload: response.data.user.id })
+    // dispatch({ type: CURRENT_USER, payload: response.data.user.id })
     localStorage.setItem('token', response.data.jwt)
     // using localStorage (built into the broswer)
     callback()
@@ -19,10 +18,9 @@ export const signup = (formProps, callback) => async dispatch => {
 export const signin = (formProps, callback) => async dispatch => {
   try {
     const response = await base.post('/api/v1/login', formProps)
-    console.log(response);
 
     dispatch({ type: AUTH_USER, payload: response.data.jwt })
-    dispatch({ type: CURRENT_USER, payload: response.data.user })
+    // dispatch({ type: CURRENT_USER, payload: response.data.user })
     localStorage.setItem('token', response.data.jwt)
     // using localStorage (built into the broswer)
     callback()

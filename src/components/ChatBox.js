@@ -66,7 +66,6 @@ class ChatBox extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     activeConvo: state.convos.activeConvo,
     currentUser: state.auth.currentUser,

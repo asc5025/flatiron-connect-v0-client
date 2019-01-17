@@ -11,6 +11,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case AUTH_USER:
+    // debugger
       return { ...state, token: action.payload }
     case AUTH_ERROR:
       return { ...state, errorMessage: action.payload }

@@ -10,7 +10,7 @@ class UsersContainer extends React.Component {
   state = {
     searchTerm: '',
     filters: {
-      type: 'all'
+      type: ''
     }
   }
 
@@ -27,20 +27,26 @@ class UsersContainer extends React.Component {
     this.setState({ filters: {...this.state.filters, type: event.target.value} })
   }
 
+  handleFocus = (event) => {
+    this.setState({ filters: { type: '' } })
+  }
+
   handleClear = () => {
     this.setState({ searchTerm: '', filters: { type: 'all' }})
   }
 
   renderList = () => {
     const { searchTerm, filters: { type } } = this.state
-    const users = Object.values(this.props.users).filter(user => {
+    const { users, currentUser } = this.props
+    const reduceUsers = Object.values(users).filter(u => u.id !== currentUser.id)
+    const renderUsers = reduceUsers.filter(user => {
       if (type === 'all') {
         return user.full_name.toLowerCase().includes(searchTerm.toLowerCase()) || user.current_company.toLowerCase().includes(searchTerm.toLowerCase()) || user.current_industry.toLowerCase().includes(searchTerm.toLowerCase())
       } else {
         return user.current_industry.toLowerCase().includes(type.toLowerCase()) && user.current_company.toLowerCase().includes(searchTerm.toLowerCase())
       }
     })
-    return users.map(user => (
+    return renderUsers.map(user => (
       <UserCard key={user.id} user={user} />
     ))
   }
@@ -55,6 +61,7 @@ class UsersContainer extends React.Component {
           handleIndustryChange={this.onIndustryChange}
           search={this.handleChange}
           industries={industries}
+          select={this.state.filters.type}
         />
         <Card.Group itemsPerRow={4}>
           {this.renderList()}
@@ -65,8 +72,10 @@ class UsersContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
-    users: state.users
+    users: state.users,
+    currentUser: state.auth.currentUser
   }
 }
 

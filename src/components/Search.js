@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Search = ({searchTerm, search, industries, handleIndustryChange, handleClear}) => {
+const Search = ({searchTerm, search, industries, handleIndustryChange, handleClear, select, handleFocus}) => {
 
   return (
     <div className="ui form">
@@ -15,8 +15,8 @@ const Search = ({searchTerm, search, industries, handleIndustryChange, handleCle
         </div>
         <div className="field">
           <label>Select Industry</label>
-          <select name="type" id="type" onChange={handleIndustryChange}>
-            <option value="all">All</option>
+          <select name="type" value={select} onChange={handleIndustryChange} onFocus={handleFocus}>
+            <option value="">Please select...</option>
             {
               industries.map(i => <option key={i} value={i}>{i}</option>)
             }
