@@ -9,7 +9,7 @@ export const sendMessage = (values) => async dispatch => {
 
 export const sendNewMessage = (id, values) => async dispatch => {
   const response = await base.post(`/api/v1/conversations/${id}/messages`, values)
-  debugger
+  dispatch({ type: SEND_MESSAGE, payload: response.data })
   // dispatch({ type: SEND_MESSAGE, payload: response.data })
 }
 
@@ -18,7 +18,6 @@ export const sendNewMessage = (id, values) => async dispatch => {
 export const fetchMessages = (id) => async dispatch => {
   const response = await base.get(`/api/v1/conversations/${id}/messages`)
   dispatch({ type: FETCH_MESSAGES, payload: response.data })
-  // callback()
 }
 
 // export const fetchMessages = (id) => {

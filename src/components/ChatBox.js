@@ -1,7 +1,7 @@
 import React from 'react';
 import { Comment, Form, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { sendMessage, sendNewMessage } from '../store/actions';
+import { sendNewMessage } from '../store/actions';
 
 class ChatBox extends React.Component {
   state = {
@@ -26,19 +26,17 @@ class ChatBox extends React.Component {
       }
     }
     if (this.state.message.length > 0) {
-      this.props.sendMessage(values)
-      // this.props.sendNewMessage( activeConvo.id, values)
+      // this.props.sendMessage(values)
+      this.props.sendNewMessage( activeConvo.id, values)
       this.setState({ message: '' })
     } else {
       alert('Please enter content')
     }
-    // content
-    //send
-    //repc
   }
 
   renderMessages = () => {
-    return this.props.activeConvo.messages.map(m => {
+    console.log(this.props.messages);
+    return this.props.messages.map(m => {
       return (
         <Comment key={m.id}>
           <Comment.Avatar src={m.sender.img_url} />
@@ -68,9 +66,11 @@ class ChatBox extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
     activeConvo: state.convos.activeConvo,
-    currentUser: state.auth.currentUser
+    currentUser: state.auth.currentUser,
+    messages: Object.values(state.messages)
   }
 }
-export default connect(mapStateToProps, { sendMessage, sendNewMessage })(ChatBox)
+export default connect(mapStateToProps, { sendNewMessage })(ChatBox)

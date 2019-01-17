@@ -5,7 +5,7 @@ import withAuth from '../hoc/withAuth';
 import ChatBox from '../components/ChatBox';
 import ListPanel from '../components/ListPanel';
 // import MessageCard from '../components/MessageCard';
-import { fetchConvos, activeConvo } from '../store/actions';
+import { fetchConvos, activeConvo, fetchMessages } from '../store/actions';
 
 class MessageContainer extends React.Component {
 
@@ -13,7 +13,7 @@ class MessageContainer extends React.Component {
     this.props.fetchConvos()
   }
 
-  handleMessages = (convo) => {
+  handleMessages = (id, convo) => {
     // if (!id) {
     //   return;
     // }
@@ -22,6 +22,8 @@ class MessageContainer extends React.Component {
     // const messages = targetConvo[0].messages
     //
     // return messages
+    this.props.fetchMessages(id)
+
     this.props.activeConvo(convo)
   }
 
@@ -63,4 +65,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { fetchConvos, activeConvo })(withAuth(MessageContainer));
+export default connect(mapStateToProps, { fetchConvos, activeConvo, fetchMessages })(withAuth(MessageContainer));
