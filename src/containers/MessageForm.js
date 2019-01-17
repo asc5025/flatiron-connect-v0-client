@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Modal, Form, Button, Icon, Header, Image, Message } from 'semantic-ui-react';
-import { createConvo, activeConvo, sendMessage } from '../store/actions';
+import { activeConvo, sendMessage } from '../store/actions';
 import { connect } from 'react-redux';
 
 class MessageForm extends React.Component {
@@ -65,10 +65,9 @@ class MessageForm extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    convo: state.convo,
     auth: state.auth
   }
 }
 
-export default connect(mapStateToProps, { createConvo, activeConvo, sendMessage })(MessageForm)
+export default connect(mapStateToProps, { activeConvo, sendMessage })(MessageForm)
 // export default connect(mapStateToProps, { createConvo, activeConvo })(withAuth(MessageForm))

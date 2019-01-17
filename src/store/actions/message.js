@@ -3,9 +3,17 @@ import { SEND_MESSAGE, FETCH_MESSAGES } from './types';
 
 export const sendMessage = (values) => async dispatch => {
   const response = await base.post(`/api/v1/convos/msg`, values)
-  // debugger
-  dispatch({ type: SEND_MESSAGE, payload: response.data })
+  debugger
+  // dispatch({ type: SEND_MESSAGE, payload: response.data })
 }
+
+export const sendNewMessage = (id, values) => async dispatch => {
+  const response = await base.post(`/api/v1/conversations/${id}/messages`, values)
+  debugger
+  // dispatch({ type: SEND_MESSAGE, payload: response.data })
+}
+
+
 
 export const fetchMessages = (id) => async dispatch => {
   const response = await base.get(`/api/v1/conversations/${id}/messages`)
@@ -22,3 +30,5 @@ export const fetchMessages = (id) => async dispatch => {
 //       })
 //   }
 // }
+
+// /api/v1/conversations/:conversation_id/messages

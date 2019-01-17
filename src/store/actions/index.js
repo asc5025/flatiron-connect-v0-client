@@ -14,12 +14,12 @@ export {
 } from './users';
 
 export {
-  createConvo,
   fetchConvos,
   activeConvo
 } from './convo';
 
 export {
   sendMessage,
-  fetchMessages
+  fetchMessages,
+  sendNewMessage
 } from './message';

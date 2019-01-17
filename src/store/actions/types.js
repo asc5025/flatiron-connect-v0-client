@@ -4,7 +4,6 @@ export const CURRENT_USER = 'CURRENT_USER';
 export const RESET_ID = 'RESET_ID';
 export const FETCH_USERS = 'FETCH_USERS';
 export const EDIT_PROFILE = 'EDIT_PROFILE';
-export const CREATE_CONVO = 'CREATE_CONVO';
 export const ACTIVE_CONVO = 'ACTIVE_CONVO';
 export const FETCH_CONVO = 'FETCH_CONVO';
 export const FETCH_CONVOS = 'FETCH_CONVOS';

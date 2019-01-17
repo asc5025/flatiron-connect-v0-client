@@ -1,5 +1,5 @@
 import { base } from '../../apis/users';
-import { FETCH_CONVOS, CREATE_CONVO, ACTIVE_CONVO } from './types';
+import { FETCH_CONVOS, ACTIVE_CONVO } from './types';
 
 
 
@@ -19,19 +19,19 @@ export const fetchConvos = () => async (dispatch) => {
 //   dispatch({ type: FETCH_CONVOS, payload: response.data })
 // }
 
-export const createConvo = (userId) => async (dispatch, getState) => {
-  const { id } = getState().auth.currentUser
-  const body = {
-    sender_id: id,
-    recipient_id: userId
-  }
-    const response = await base.post('/api/v1/conversations', body)
-    dispatch({ type: CREATE_CONVO, payload: response.data.conversation })
-    // debugger
+// export const createConvo = (userId) => async (dispatch, getState) => {
+//   const { id } = getState().auth.currentUser
+//   const body = {
+//     sender_id: id,
+//     recipient_id: userId
+//   }
+//     const response = await base.post('/api/v1/conversations', body)
+//     dispatch({ type: CREATE_CONVO, payload: response.data.conversation })
+//     // debugger
+//
+// }
 
-}
-
-export const activeConvo = (id) => ({ type: ACTIVE_CONVO, payload: id })
+export const activeConvo = (convo) => ({ type: ACTIVE_CONVO, payload: convo })
 
 
 // export const fetchConvo = id => async dispatch => {
