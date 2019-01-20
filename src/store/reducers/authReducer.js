@@ -11,12 +11,10 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case AUTH_USER:
-    // debugger
       return { ...state, token: action.payload }
     case AUTH_ERROR:
       return { ...state, errorMessage: action.payload }
     case CURRENT_USER:
-    // debugger
       return { ...state, token: localStorage.getItem('token'), currentUser: action.payload, loggedIn: true }
     case RESET_ID:
       return { ...state, currentUser: '', loggedIn: false }

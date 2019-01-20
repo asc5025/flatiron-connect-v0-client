@@ -19,7 +19,6 @@ class Signup extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const { handleSubmit } = this.props
     // handleSubmit given to us by reduxForm, as props
 

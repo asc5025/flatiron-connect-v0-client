@@ -7,27 +7,24 @@ class ChatBox extends React.Component {
   state = {
     message: ''
   }
-  // componentDidMount(){
-  //
-  // }
 
   handleChange = event => this.setState({ message: event.target.value })
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const { activeConvo, currentUser } = this.props
+    const { targetConvo, currentUser } = this.props
     let rId;
-    rId = (currentUser.id === activeConvo.sender_id ? activeConvo.recipient_id : activeConvo.sender_id)
+    rId = (currentUser.id === targetConvo.sender_id ? targetConvo.recipient_id : targetConvo.sender_id)
     let values = {
       message: {
         content: this.state.message,
         sender_id: currentUser.id,
-        recipient_id: rId
+        recipient_id: rId,
+        conversation_id: targetConvo.id
       }
     }
     if (this.state.message.length > 0) {
-      // this.props.sendMessage(values)
-      this.props.sendNewMessage( activeConvo.id, values)
+      this.props.sendNewMessage(targetConvo.id, values)
       this.setState({ message: '' })
     } else {
       alert('Please enter content')
@@ -35,29 +32,33 @@ class ChatBox extends React.Component {
   }
 
   renderMessages = () => {
-    console.log(this.props.messages);
-    return this.props.messages.map(m => {
-      return (
-        <Comment key={m.id}>
+    const userConvo = this.props.conversations.find(c => c.id === this.props.targetConvo.id)
+    if (userConvo){
+      return userConvo.messages.map(m => {
+        return (
+          <Comment key={m.id}>
           <Comment.Avatar src={m.sender.img_url} />
           <Comment.Content>
-            <Comment.Author as='a'>{m.sender.full_name}</Comment.Author>
-            <Comment.Text>{m.content}</Comment.Text>
+          <Comment.Author as='a'>{m.sender.full_name}</Comment.Author>
+          <Comment.Text>{m.content}</Comment.Text>
           </Comment.Content>
-        </Comment>
-      )
-    })
+          </Comment>
+        )
+      })
+    } else {
+      return null
+    }
   }
 
   render() {
-    if (!this.props.activeConvo) {
+    if (Object.keys(this.props.targetConvo).length === 0) {
       return <div> Select Someone</div>
     }
     return (
       <>
         {this.renderMessages()}
         <Form onSubmit={this.handleSubmit}>
-          <Form.Input onChange={this.handleChange}/>
+          <Form.Input value={this.state.message} onChange={this.handleChange}/>
           <Button content='Send' icon='send' primary/>
         </Form>
       </>
@@ -67,9 +68,8 @@ class ChatBox extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    activeConvo: state.convos.activeConvo,
     currentUser: state.auth.currentUser,
-    messages: Object.values(state.messages)
+    // messages: state.convos.conversations.messages
   }
 }
-export default connect(mapStateToProps, { sendNewMessage })(ChatBox)
+export default connect(mapStateToProps, {sendNewMessage })(ChatBox)

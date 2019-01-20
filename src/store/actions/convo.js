@@ -7,10 +7,8 @@ export const fetchConvos = () => async (dispatch) => {
   let config = {
     headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
   }
-
   const response = await base.get(`/api/v1/user/convos/`, config)
   dispatch({ type: FETCH_CONVOS, payload: response.data })
-  console.log(response.data);
 }
 
 

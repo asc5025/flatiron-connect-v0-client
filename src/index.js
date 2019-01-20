@@ -6,6 +6,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './store/reducers';
 import history from './history';
+import { ActionCableProvider } from 'react-actioncable-provider';
 
 import App from './containers/App';
 
@@ -19,10 +20,12 @@ const store = createStore(
 ))
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router history={history}>
-      <App />
-    </Router>
-  </Provider>,
+  <ActionCableProvider url={'ws://localhost:3000/cable'}>
+    <Provider store={store}>
+      <Router history={history}>
+        <App />
+      </Router>
+    </Provider>
+  </ActionCableProvider>,
   document.querySelector('#root')
 )

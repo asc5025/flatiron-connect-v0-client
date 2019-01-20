@@ -21,5 +21,6 @@ export {
 export {
   sendMessage,
   fetchMessages,
-  sendNewMessage
+  sendNewMessage,
+  actionCableMsg
 } from './message';

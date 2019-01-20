@@ -3,7 +3,7 @@ import { FETCH_CONVOS, ACTIVE_CONVO, SEND_MESSAGE } from '../actions/types';
 
 const initalState = {
   conversations: {},
-  activeConvo: null
+  activeConvo: {}
 }
 
 
@@ -15,8 +15,10 @@ export default (state = initalState, action) => {
     //   return { ...state, [action.payload.id]: action.payload, activeConvo: action.payload.id }
     case ACTIVE_CONVO:
       return { ...state, activeConvo: action.payload }
-    // case SEND_MESSAGE:
-      // return { ...state, activeConvo: { messages: [...state.activeConvo.messages, action.payload] }  }
+    case SEND_MESSAGE:
+      // debugger
+      return {...state, conversations: {...state.conversations, [action.payload.conversation_id]: {...state.conversations[action.payload.conversation_id], messages: [...state.conversations[action.payload.conversation_id].messages, action.payload]
+}}}
     default:
       return state;
   }

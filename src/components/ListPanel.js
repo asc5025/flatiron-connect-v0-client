@@ -1,9 +1,8 @@
 import React from 'react';
 import { Header, List, Image } from 'semantic-ui-react';
 
-const ListPanel = ({ convos, currentUser, handleMessages, messages }) => {
-  console.log("In ListPanel, props", messages);
-
+const ListPanel = ({ convos, currentUser, handleMessages, messages, handleReceivedMessage }) => {
+  
   const renderThumbnails = () => {
     if (!convos) {
       return
@@ -11,7 +10,9 @@ const ListPanel = ({ convos, currentUser, handleMessages, messages }) => {
     return convos.map(convo => {
       if (convo.recipient_id === currentUser.id ) {
         return (
-          <List.Item key={convo.id} onClick={() => handleMessages(convo.id, convo)}>
+          <List.Item
+              key={convo.id}
+              onClick={() => handleMessages(convo.id, convo)}>
             <Image avatar src={convo.sender.img_url} />
             <List.Content>
               <List.Header>{convo.sender.full_name}</List.Header>
@@ -20,7 +21,9 @@ const ListPanel = ({ convos, currentUser, handleMessages, messages }) => {
         )
       } else {
         return (
-        <List.Item key={convo.id} onClick={() => handleMessages(convo.id, convo)}>
+        <List.Item
+            key={convo.id}
+            onClick={() => handleMessages(convo.id, convo)}>
           <Image avatar src={convo.recipient.img_url} />
           <List.Content>
             <List.Header>{convo.recipient.full_name}</List.Header>

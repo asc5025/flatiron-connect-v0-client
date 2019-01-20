@@ -34,7 +34,6 @@ class SignupForm extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { page } = this.state
     const { handleSubmit } = this.props
     return (
