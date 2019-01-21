@@ -1,0 +1,38 @@
+/* img.bg {
+  background-image: url("../../assets/images/Flatiron-School.jpg");
+  background-size: cover;
+} */
+
+#bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 1024px;
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  background-size: cover;
+}
+
+@media screen and (max-width: 1024px) {
+  #bg {
+    left: 50%;
+    margin-left: -512px;
+  }
+}
+
+h1.auth-header {
+  color: #1871ba !important;
+  text-shadow: 1px 1px 1px #c1c1c1 !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.form-segment {
+  position: absolute;
+  right: -42%;
+  height: auto;
+  width: 40%;
+  justify-content: space-evenly;
+  opacity: 0.95;
+  overflow: hidden;
+}

@@ -1,37 +1,43 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import validate from './validate'
-import renderField from './renderField'
+import { Form, Button, Icon } from 'semantic-ui-react';
+import { LabelInputField } from 'react-semantic-redux-form';
+import '../Signin.css';
+
 
 const FormFirstPage = props => {
   const { handleSubmit } = props
   return (
-    <form onSubmit={handleSubmit}>
+    <Form inverted onSubmit={handleSubmit} >
       <Field
         name="full_name"
         type="text"
-        component={renderField}
-        label="Full Name"
+        placeholder='Full Name'
+        label={{ content: <Icon color='blue' name='user circle outline' size='large' /> }}
+        component={LabelInputField}
       />
       <Field
         name="email"
         type="email"
-        component={renderField}
-        label="Email"
+        placeholder='Email'
+        label={{ content: <Icon color='blue' name='mail' size='large' /> }}
+        component={LabelInputField}
       />
       <Field
         name="password"
         type="password"
-        component={renderField}
-        label="Password"
+        placeholder='Password'
+        label={{ content: <Icon color='blue' name='lock' size='large' /> }}
+        component={LabelInputField}
       />
       <br/>
-      <div>
-        <button type="submit" className="next">
+      <Form.Field>
+        <Button type="submit" primary size='small' className="next">
           Next
-        </button>
-      </div>
-    </form>
+        </Button>
+      </Form.Field>
+    </Form>
   )
 }
 

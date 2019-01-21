@@ -1,46 +1,51 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import validate from './validate'
-import renderField from './renderField'
+import { Form, Button, Icon } from 'semantic-ui-react';
+import { LabelInputField } from 'react-semantic-redux-form';
+import '../Signin.css';
 
 const FormSecondPage = props => {
   const { handleSubmit, pristine, previousPage, submitting } = props
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} >
       <Field
         name="current_position"
         type="text"
-        component={renderField}
-        label="Current Position"
+        component={LabelInputField}
+        label={{ content: <Icon color='blue' name='user' size='large' /> }}
+        placeholder="Current Position"
       />
       <Field
         name="current_company"
         type="text"
-        component={renderField}
-        label="Current Company"
+        component={LabelInputField}
+        label={{ content: <Icon color='blue' name='building' size='large' /> }}
+        placeholder='Current Company'
       />
       <Field
         name="current_industry"
         type="text"
-        component={renderField}
-        label="Industry"
+        component={LabelInputField}
+        label={{ content: <Icon color='blue' name='industry' size='large' /> }}
+        placeholder='Industry'
       />
       <Field
         name="img_url"
         type="text"
-        component={renderField}
-        label="Profile Pic (url)"
+        component={LabelInputField}
+        label={{ content: <Icon color='blue' name='image outline' size='large' /> }}
+        placeholder='Image SRC'
       />
       <br/>
       <div>
-        <button type="button" className="previous" onClick={previousPage}>
-          Previous
-        </button>
-        <button type="submit" disabled={pristine || submitting}>
-          Submit
-        </button>
+        <Button size='small' content='Submit' type="submit" primary disabled={pristine || submitting} />
       </div>
-    </form>
+      <br/>
+      <div>
+        <Button inverted size='mini' content='Back' icon='left arrow' type="button" className="previous" onClick={previousPage} />
+      </div>
+    </Form>
   )
 }
 

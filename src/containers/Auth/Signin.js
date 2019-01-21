@@ -1,9 +1,13 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
+import { reduxForm, Field } from 'redux-form';
+import { Form, Button, Segment, Header, Icon } from 'semantic-ui-react';
+import { LabelInputField } from 'react-semantic-redux-form';
+import './Signin.css';
+import authBg from '../../assets/images/Flatiron-School.jpg';
 
 class Signin extends React.Component {
 
@@ -23,38 +27,38 @@ class Signin extends React.Component {
     // handleSubmit given to us by reduxForm, as props
 
     return (
-      <div>
-        <form onSubmit={handleSubmit(this.onSubmit)}>
-          <fieldset>
-            <label>Email: </label>
+      <>
+        <img src={authBg} id="bg" alt="background"/>
+        <Segment inverted className="form-segment">
+          <Header as='h1' inverted className="auth-header">Flatiron Connect</Header>
+          <Form inverted onSubmit={handleSubmit(this.onSubmit)} className="form">
             <Field
               name="email"
               type="text"
-              component="input"
+              label={{ content: <Icon color='blue' name='mail' size='large' /> }}
+              component={LabelInputField}
+              placeholder='Email'
               autoComplete="none"
             />
-          </fieldset>
-          <fieldset>
-            <label>Password: </label>
             <Field
               name="password"
               type="password"
-              component="input"
+              label={{ content: <Icon color='blue' name='lock' size='large' /> }}
+              component={LabelInputField}
+              placeholder='Password'
               autoComplete="none"
             />
-          </fieldset>
-          <div>{this.props.errorMessage}</div>
-          <button>Sign in!</button>
-        </form>
-        <div>
-        <div>
-          <span>
-            Create an Account?
-            <span>   <Link to="/signup">Sign up</Link></span>
-          </span>
-        </div>
-        </div>
-      </div>
+            <div>{this.props.errorMessage}</div>
+            <Form.Field
+              control={Button} primary size='small'
+              type="submit"
+            >
+              Sign in!
+            </Form.Field>
+            <span>Create an Account?<span>   <Link to="/signup">Sign up</Link></span></span>
+          </Form>
+        </Segment>
+      </>
     )
   }
 }

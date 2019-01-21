@@ -2,6 +2,7 @@ import React from 'react';
 import { Comment, Form, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { sendNewMessage } from '../store/actions';
+import './ChatBox.css'
 
 class ChatBox extends React.Component {
   state = {
@@ -37,11 +38,11 @@ class ChatBox extends React.Component {
       return userConvo.messages.map(m => {
         return (
           <Comment key={m.id}>
-          <Comment.Avatar src={m.sender.img_url} />
-          <Comment.Content>
-          <Comment.Author as='a'>{m.sender.full_name}</Comment.Author>
-          <Comment.Text>{m.content}</Comment.Text>
-          </Comment.Content>
+            <Comment.Avatar src={m.sender.img_url} className="img-msg"/>
+            <Comment.Content>
+              <Comment.Author><a>{m.sender.full_name}</a></Comment.Author>
+              <Comment.Text>{m.content}</Comment.Text>
+            </Comment.Content>
           </Comment>
         )
       })
@@ -56,10 +57,14 @@ class ChatBox extends React.Component {
     }
     return (
       <>
+        <div className="chatbox">
         {this.renderMessages()}
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Input value={this.state.message} onChange={this.handleChange}/>
-          <Button content='Send' icon='send' primary/>
+        </div>
+        <Form onSubmit={this.handleSubmit} size='mini'>
+          <Form.Group className="input-msg">
+            <Form.Input value={this.state.message} onChange={this.handleChange} width={14}/>
+            <Button content='Send' size='mini' primary/>
+          </Form.Group>
         </Form>
       </>
     )

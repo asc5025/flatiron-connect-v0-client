@@ -1,0 +1,24 @@
+/* .chatbox {
+  max-height: 300px;
+  width: 100%;
+  height: auto;
+  overflow-y: scroll;
+} */
+
+.input-msg {
+  padding-top: 1em;
+  padding-right: .5em;
+  justify-content: space-between;
+  overflow-x: hidden;
+}
+
+.chatbox {
+  height: 420px;
+  overflow-y: scroll;
+}
+
+.img-msg img {
+  width: 30px !important;
+  height: 30px !important;
+  object-fit: cover;
+}

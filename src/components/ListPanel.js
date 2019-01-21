@@ -1,8 +1,9 @@
 import React from 'react';
 import { Header, List, Image } from 'semantic-ui-react';
+import './ListPanel.css'
 
 const ListPanel = ({ convos, currentUser, handleMessages, messages, handleReceivedMessage }) => {
-  
+
   const renderThumbnails = () => {
     if (!convos) {
       return
@@ -36,8 +37,8 @@ const ListPanel = ({ convos, currentUser, handleMessages, messages, handleReceiv
 
   return (
     <>
-      <Header as='h3'>Messages</Header>
-      <List animated verticalAlign='middle'>
+      <Header as='h3'>Connects</Header>
+      <List animated verticalAlign='middle' divided>
         {renderThumbnails()}
       </List>
     </>

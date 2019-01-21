@@ -7,6 +7,8 @@ import ChatBox from '../components/ChatBox';
 import ListPanel from '../components/ListPanel';
 import { fetchConvos, activeConvo, actionCableMsg } from '../store/actions';
 import Cable from '../components/Cable';
+import './MessageContainer.css';
+import '../components/ListPanel.css';
 
 class MessageContainer extends React.Component {
 
@@ -35,7 +37,7 @@ class MessageContainer extends React.Component {
     }
 
     return (
-      <Segment >
+      <Segment className="message-container">
       <ActionCable channel={{ channel: 'ConversationsChannel' }} onReceived={this.handleReceivedConversation} />
         {this.props.convos.length ? (
             <Cable
@@ -43,8 +45,8 @@ class MessageContainer extends React.Component {
               handleReceivedMessage={this.handleReceivedMessage}
             />
           ) : null}
-        <Grid container centered columns={2} divided >
-          <Grid.Column width={6}>
+        <Grid container columns={2}>
+          <Grid.Column width={6} className="list-panel">
             <ListPanel
               convos={this.props.convos}
               currentUser={this.props.currentUser}
