@@ -32,7 +32,7 @@ class UsersContainer extends React.Component {
   }
 
   handleClear = () => {
-    this.setState({ searchTerm: '', filters: { type: 'all' }})
+    this.setState({ searchTerm: '', filters: { type: '' }})
   }
 
   renderList = () => {
@@ -40,7 +40,7 @@ class UsersContainer extends React.Component {
     const { users, currentUser } = this.props
     const reduceUsers = Object.values(users).filter(u => u.id !== currentUser.id)
     const renderUsers = reduceUsers.filter(user => {
-      if (type === 'all') {
+      if (type === '') {
         return user.full_name.toLowerCase().includes(searchTerm.toLowerCase()) || user.current_company.toLowerCase().includes(searchTerm.toLowerCase()) || user.current_industry.toLowerCase().includes(searchTerm.toLowerCase())
       } else {
         return user.current_industry.toLowerCase().includes(type.toLowerCase()) && user.current_company.toLowerCase().includes(searchTerm.toLowerCase())
@@ -63,7 +63,7 @@ class UsersContainer extends React.Component {
           industries={industries}
           select={this.state.filters.type}
         />
-        <Card.Group itemsPerRow={4}>
+        <Card.Group itemsPerRow={5}>
           {this.renderList()}
         </Card.Group>
       </>

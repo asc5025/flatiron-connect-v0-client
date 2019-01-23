@@ -1,7 +1,8 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Container, Form, Button } from 'semantic-ui-react';
-import history from '../history';
+// import history from '../history';
+import './ProfileForm.css'
 
 class ProfileForm extends React.Component {
 
@@ -33,7 +34,7 @@ class ProfileForm extends React.Component {
   render() {
     return (
       <Container>
-      <Form error onSubmit={this.props.handleSubmit(this.onSubmit)}>
+      <Form error onSubmit={this.props.handleSubmit(this.onSubmit)} className="edit-profile">
         <Field name="full_name" component={this.renderInput} label="Full Name" />
         <Field name="email" component={this.renderInput} label="Email" />
         <Field name="img_url" component={this.renderInput} label="Image Url" />
@@ -42,7 +43,6 @@ class ProfileForm extends React.Component {
         <Field name="current_industry" component={this.renderInput} label="Industry" />
         <Button compact primary type='submit'>Submit to Edit</Button>
       </Form>
-      <Button compact onClick={() => history.push('/')}>Go Back</Button>
       </Container>
     )
   }

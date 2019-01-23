@@ -31,7 +31,7 @@ class MessageForm extends React.Component {
       this.setState({ message: '', messageSent: true })
       setTimeout(() => {
         this.setState({ modalOpen: false, messageSent: false })
-      }, 450)
+      }, 350)
     } else {
       alert('Missing Text')
     }
@@ -48,7 +48,7 @@ class MessageForm extends React.Component {
         closeIcon
         open={this.state.modalOpen}
         onClose={this.handleClose}
-        trigger={<Button onClick={this.handleOpen} primary><Icon name="comment alternate outline"/>Message</Button>}
+        trigger={<Button onClick={this.handleOpen} fluid primary><Icon name="comment alternate outline"/>Message</Button>}
       >
         <Header as='h3'><Image circular src={img_url}/>{full_name}</Header>
         <Modal.Content>

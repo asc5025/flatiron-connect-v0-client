@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { FETCH_CONVOS, ACTIVE_CONVO, SEND_MESSAGE } from '../actions/types';
+import { FETCH_CONVOS, ACTIVE_CONVO, SEND_MESSAGE, DEACTIVATE_CONVO } from '../actions/types';
 
 const initalState = {
   conversations: {},
@@ -19,6 +19,8 @@ export default (state = initalState, action) => {
       // debugger
       return {...state, conversations: {...state.conversations, [action.payload.conversation_id]: {...state.conversations[action.payload.conversation_id], messages: [...state.conversations[action.payload.conversation_id].messages, action.payload]
 }}}
+    case DEACTIVATE_CONVO:
+      return { ...state, activeConvo: {} }
     default:
       return state;
   }

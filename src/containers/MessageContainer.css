@@ -1,5 +1,6 @@
 .message-container {
   padding: 1.5em .5em 1.5em .5em !important;
-  height: 550px;
+  margin: 4em .5em !important;
+  height: 600px;
   overflow: hidden;
 }

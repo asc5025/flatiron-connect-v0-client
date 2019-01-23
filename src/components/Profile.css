@@ -1,0 +1,47 @@
+.profile-main {
+  height: 525px;
+  overflow: hidden;
+  margin: 4em .5em !important;
+  padding: 1.5em .5em 1.5em .5em !important;
+}
+
+.profile-card {
+  display: flex;
+  height: 280px;
+  justify-content: center;
+  overflow: hidden;
+  padding: .5em 0;
+}
+
+.profile-card img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
+  height: 100%;
+  width: 270px;
+  overflow: hidden;
+}
+
+.profile-content {
+  text-align: center;
+  padding: .5em 0;
+  height: 170px;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.inner-div {
+  display: inline-block;
+  text-align: left;
+}
+
+.back-btn {
+  padding-left: 1.4em !important;
+}
+
+
+/* .user-card {
+  -webkit-box-shadow: none !important;
+} */

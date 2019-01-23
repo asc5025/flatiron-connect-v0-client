@@ -10,6 +10,7 @@ export const fetchUsers = () => async dispatch => {
 
 export const editProfile = (id, formValues) => async dispatch => {
   const response = await base.patch(`/api/v1/users/${id}`, formValues)
+  debugger
   dispatch({ type: EDIT_PROFILE, payload: response.data })
   history.push('/')
 }

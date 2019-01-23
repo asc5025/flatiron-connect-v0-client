@@ -12,6 +12,7 @@ const ListPanel = ({ convos, currentUser, handleMessages, messages, handleReceiv
       if (convo.recipient_id === currentUser.id ) {
         return (
           <List.Item
+              className="list-user"
               key={convo.id}
               onClick={() => handleMessages(convo.id, convo)}>
             <Image avatar src={convo.sender.img_url} />
@@ -22,15 +23,16 @@ const ListPanel = ({ convos, currentUser, handleMessages, messages, handleReceiv
         )
       } else {
         return (
-        <List.Item
-            key={convo.id}
-            onClick={() => handleMessages(convo.id, convo)}>
-          <Image avatar src={convo.recipient.img_url} />
-          <List.Content>
-            <List.Header>{convo.recipient.full_name}</List.Header>
-          </List.Content>
-        </List.Item>
-      )
+          <List.Item
+              className="list-user"
+              key={convo.id}
+              onClick={() => handleMessages(convo.id, convo)}>
+            <Image avatar src={convo.recipient.img_url} />
+            <List.Content>
+              <List.Header>{convo.recipient.full_name}</List.Header>
+            </List.Content>
+          </List.Item>
+        )
       }
     })
   }

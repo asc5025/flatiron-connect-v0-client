@@ -1,11 +1,11 @@
 .list-panel {
-  height: 510px;
+  height: 570px;
   overflow-y: scroll;
   overflow-x: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/* .list-user {
-  padding-left: .5
-} */
+.list-user {
+  padding: .35em 0 !important;
+}

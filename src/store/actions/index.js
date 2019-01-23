@@ -15,7 +15,8 @@ export {
 
 export {
   fetchConvos,
-  activeConvo
+  activeConvo,
+  deactivateConvo
 } from './convo';
 
 export {

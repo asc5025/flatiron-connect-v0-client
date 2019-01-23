@@ -9,3 +9,4 @@ export const FETCH_CONVO = 'FETCH_CONVO';
 export const FETCH_CONVOS = 'FETCH_CONVOS';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const FETCH_MESSAGES = 'FETCH_MESSAGES';
+export const DEACTIVATE_CONVO = 'DEACTIVATE_CONVO';

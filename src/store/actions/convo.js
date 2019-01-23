@@ -1,5 +1,5 @@
 import { base } from '../../apis/users';
-import { FETCH_CONVOS, ACTIVE_CONVO } from './types';
+import { FETCH_CONVOS, ACTIVE_CONVO, DEACTIVATE_CONVO } from './types';
 
 
 
@@ -30,6 +30,8 @@ export const fetchConvos = () => async (dispatch) => {
 // }
 
 export const activeConvo = (convo) => ({ type: ACTIVE_CONVO, payload: convo })
+
+export const deactivateConvo = () => ({ type: DEACTIVATE_CONVO })
 
 
 // export const fetchConvo = id => async dispatch => {

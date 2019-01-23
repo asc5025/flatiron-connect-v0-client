@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './NavHeader.css';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Divider } from 'semantic-ui-react';
 
 
 class NavHeader extends React.Component {
@@ -44,6 +44,7 @@ class NavHeader extends React.Component {
             {this.renderLinks()}
           </Menu.Menu>
         </Menu>
+        <Divider section />
       </>
     )
   }
