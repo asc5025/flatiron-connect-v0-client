@@ -34,14 +34,9 @@ export default (ChildComponent) => {
       loggedIn: state.auth.loggedIn
     }
   }
-  //
-  // const mapStateToProps = state => {
-  //   return { auth: state.auth.authenticated }
-  // }
 
   return connect(mapStateToProps, {fetchCurrentUser})(ComposedComponent);
 }
-
 
 // this is a function (hoc)
 // injecting another component, reusable functionality (i.e. authentication)

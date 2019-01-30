@@ -43,7 +43,7 @@ class UsersContainer extends React.Component {
       if (type === '') {
         return user.full_name.toLowerCase().includes(searchTerm.toLowerCase()) || user.current_company.toLowerCase().includes(searchTerm.toLowerCase()) || user.current_industry.toLowerCase().includes(searchTerm.toLowerCase())
       } else {
-        return user.current_industry.toLowerCase().includes(type.toLowerCase()) && user.current_company.toLowerCase().includes(searchTerm.toLowerCase())
+        return (user.current_industry.toLowerCase().includes(type.toLowerCase()) && user.current_company.toLowerCase().includes(searchTerm.toLowerCase())) || (user.current_industry.toLowerCase().includes(type.toLowerCase()) && user.full_name.toLowerCase().includes(searchTerm.toLowerCase()))
       }
     })
     return renderUsers.map(user => (

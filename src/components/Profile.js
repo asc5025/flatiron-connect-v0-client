@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { editProfile } from '../store/actions';
+import { editProfile, fetchCurrentUser } from '../store/actions';
 import ProfileForm from './ProfileForm'
 import _ from 'lodash';
 import { Segment, Image, Grid, Divider, Button, List } from 'semantic-ui-react';
@@ -72,4 +72,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { editProfile })(withAuth(Profile));
+export default connect(mapStateToProps, { editProfile, fetchCurrentUser })(withAuth(Profile));
